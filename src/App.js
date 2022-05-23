@@ -1,6 +1,7 @@
 import Expenses from "./componants/Expanse/Expenses";
 import NewExpense from "./componants/NewExpense/NewExpense";
 import {useState} from "react";
+import Chart from "./componants/Chart/Chart";
 
 const dummyItems = [{
     title: "Car ", amount: 1250, date: new Date(2022, 10, 5), id: 0

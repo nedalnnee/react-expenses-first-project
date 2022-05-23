@@ -3,6 +3,7 @@ import ExpenseForm from "./ExpenseFrom";
 import {useState} from "react";
 
 const NewExpense = (props) => {
+    const [isEditing, setIsEditing] = useState(false);
 
     useState(props.itemsLength)
     const newExpenseHandler = (newExpenseDate) => {
@@ -12,9 +13,26 @@ const NewExpense = (props) => {
         }
         props.onNewExpenseAdd(expenseDate)
     }
+    const startEditingHandler = () => {
+        setIsEditing(true);
+    };
+
+    const stopEditingHandler = () => {
+        setIsEditing(false);
+    };
 
     return (
-        <ExpenseForm onNewExpense={newExpenseHandler}/>
+        <div className='new-expense'>
+            {!isEditing && (
+                <button onClick={startEditingHandler}>Add New Expense</button>
+            )}
+            {isEditing && (
+                <ExpenseForm
+                    onNewExpense={newExpenseHandler}
+                    onCancel={stopEditingHandler}
+                />
+            )}
+        </div>
     )
 }
 
